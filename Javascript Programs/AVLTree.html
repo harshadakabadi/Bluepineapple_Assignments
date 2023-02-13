@@ -1,0 +1,150 @@
+<html>
+<body>
+<script>
+
+        class Node {
+            constructor(d) {
+            this.key = d;
+            this.height = 1;
+            this.left = null;
+            this.right = null;
+            }
+        }
+
+        class AVLTree {
+            constructor() {
+            this.root = null;
+            }
+            height(N) {
+            if (N == null) return 0;
+
+            return N.height;
+            }
+
+            max(a, b) {
+            return a > b ? a : b;
+            }
+            rightRotate(y) {
+            var x = y.left;
+            var T2 = x.right;
+            x.right = y;
+            y.left = T2;
+            y.height = this.max(this.height(y.left),
+            this.height(y.right)) + 1;
+            x.height = this.max(this.height(x.left),
+            this.height(x.right)) + 1;
+            return x;
+            }
+
+            leftRotate(x) {
+            var y = x.right;
+            var T2 = y.left;
+
+            y.left = x;
+            x.right = T2;
+
+            x.height = this.max(this.height(x.left),
+            this.height(x.right)) + 1;
+            y.height = this.max(this.height(y.left),
+            this.height(y.right)) + 1;
+
+            return y;
+            }
+
+            getBalance(N) {
+            if (N == null) return 0;
+
+            return this.height(N.left) - this.height(N.right);
+            }
+
+            insert(node, key) {
+            if (node == null) return new Node(key);
+
+            if (key < node.key)
+            node.left = this.insert(node.left, key);
+            else if (key > node.key)
+            node.right = this.insert(node.right, key);
+            else return node;
+
+            node.height =
+                1 + this.max(this.height(node.left),
+                    this.height(node.right));
+
+            var balance = this.getBalance(node);
+
+            if (balance > 1 && key < node.left.key)
+            return this.rightRotate(node);
+
+            if (balance < -1 && key > node.right.key)
+                return this.leftRotate(node);
+
+            if (balance > 1 && key > node.left.key) {
+                node.left = this.leftRotate(node.left);
+                return this.rightRotate(node);
+            }
+
+            if (balance < -1 && key < node.right.key) {
+                node.right = this.rightRotate(node.right);
+                return this.leftRotate(node);
+            }
+
+            return node;
+            }
+
+            preOrder(node) {
+            if (node != null) {
+                document.write(node.key + " ");
+                this.preOrder(node.left);
+                this.preOrder(node.right);
+            }
+            }
+        }
+
+      /* function testPreOrder(n,num[],int expectedOutcome[])
+        {
+            struct Node * root=NULL;
+            int count=0,i;
+            for(i=0;i<n;i++)
+            {
+                root = insertNode(root,num[i]);
+            }
+            preorder(root);
+            for(i=0;i<n;i++)
+            {
+                if(arr[i]==expectedOutcome[i])
+                {
+                    count++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if(count==n)
+            {
+                alert("\nsuccessful for insert\n");
+            }
+            else
+            {
+                alert("\nunsuccessful for insert\n");
+            }
+        }*/
+
+        var tree = new AVLTree();
+
+        tree.root = tree.insert(tree.root, 10);
+        tree.root = tree.insert(tree.root, 20);
+        tree.root = tree.insert(tree.root, 30);
+        tree.root = tree.insert(tree.root, 40);
+        tree.root = tree.insert(tree.root, 50);
+        tree.root = tree.insert(tree.root, 25);
+
+        document.write(
+        "Preorder traversal of the " + "constructed AVL tree is "
+        );
+        tree.preOrder(tree.root);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+    <script>
+            function CheckAlphabet(ch){
+                if( (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') )
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            function TestcheckForAlphabet(ch,expectedOutcome)
+            {
+                
+                if(CheckAlphabet(ch) == expectedOutcome)
+                {
+                    alert("Successful ");
+                }
+                else
+                {
+                    alert("Unsuccessful ");		
+                }
+            }
+            let ch = prompt("Enter value :",'');
+            TestcheckForAlphabet(ch,0);      
+    </script>
+ </html>

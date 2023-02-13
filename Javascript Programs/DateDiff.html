@@ -1,0 +1,28 @@
+<html>     
+
+<script>  
+    function CalculateDateDiff(d1 , d2)
+    {
+        let diff = d2.getTime() - d1.getTime();  
+        let daydiff = diff / (1000 * 60 * 60 * 24);   
+        return Math.trunc(daydiff);
+    }
+    function TestCalculateDateDiff(funcOutcome,ExpectedOutcome)
+    {
+        if(funcOutcome == ExpectedOutcome )
+        {
+            alert("successful");
+        }
+        else
+        {
+            alert("Unsuccessful");
+        }
+    }
+    let d1 = new Date("08/14/2020");   
+    let d2 = new Date("09/14/2020");   
+    let funcOutcome = CalculateDateDiff(d1 , d2);
+    TestCalculateDateDiff(funcOutcome,32);
+   
+</script>       
+      
+</html>    

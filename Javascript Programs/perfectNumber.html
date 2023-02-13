@@ -1,0 +1,42 @@
+<html>
+    <script>
+
+        function checkPerfectNumber(num)
+        {
+            let sum = 0 , i ;
+            if(num > 1)
+            {
+                for( i = 1 ; i < num ; i++)
+                {
+                    if ( num % i == 0 )
+                    {
+                        sum = sum + i;
+                        
+                    }	
+                }
+                if(sum == num)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            } 
+        }
+        function TestPerfectNumber(num ,ExpectedValue)
+        {
+            if(checkPerfectNumber(num) == ExpectedValue)
+            {
+                alert("successful for " +num);
+            }
+            else
+            {
+                alert("Unsuccessful for " +num);
+            }
+        }
+        let num = prompt("Enter Number :",'');
+        TestPerfectNumber(num,1);
+        
+    </script>
+</html>

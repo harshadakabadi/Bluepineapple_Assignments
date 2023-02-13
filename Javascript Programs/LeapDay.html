@@ -1,0 +1,32 @@
+<html>
+<script>
+    function checkLeapDay(dd,mm,yyyy)
+    {
+        if((dd==29 && mm==2) && ((yyyy%4==0 && yyyy%100!=0) || yyyy%400==0))
+        {  
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    function TestCheckLeapDayFunc(dd,mm,yyyy,expectedOutcome)
+    {
+        if(checkLeapDay(dd,mm,yyyy)==expectedOutcome)
+        {
+            alert("Successful");
+        }
+        else
+        {
+            alert("Unsuccessful ");
+        }
+    }
+
+    let date = prompt("Enter Date :",'');
+    let month = prompt("Enter Month :",'');
+    let year = prompt("Enter Year :",'');
+    TestCheckLeapDayFunc(date,month,year,1);
+</script>
+
+</html>

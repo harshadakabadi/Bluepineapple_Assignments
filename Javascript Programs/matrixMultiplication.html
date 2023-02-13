@@ -1,0 +1,68 @@
+<html>
+
+<body>
+    <script>
+        function multiply(m1, m2, mat1, n1, n2, mat2) {
+            let x, i, j;
+            let res = new Array(m1);
+            for (i = 0; i < m1; i++)
+                res[i] = new Array(n2);
+
+            for (i = 0; i < m1; i++) {
+                for (j = 0; j < n2; j++) {
+                    res[i][j] = 0;
+                    for (x = 0; x < m2; x++) {
+                        res[i][j] += mat1[i][x] * mat2[x][j];
+                    }
+                }
+            }
+            for (i = 0; i < m1; i++) {
+                for (j = 0; j < n2; j++) {
+                    document.write(res[i][j] + " ");
+                }
+                document.write("<br>");
+            }
+            return res;
+        }
+        function TestMultiplyMatrices(m1, m2, mat1, n1, n2, mat2,expectedOutcome)
+                {
+                    let i,j,count=0;
+                    let arr = new Array(m1*n2);
+                    arr = multiply(m1,m2,mat1,n1,n2,mat2);
+                    for(i=0;i<m1*n2;i++)
+                    {
+                            if(arr[i]==expectedOutcome[i])
+                            {
+                                count++;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        
+                    }
+                    if(count == m1*n2)
+                    {
+                        alert("successful\n");
+                    }
+                    else
+                    {
+                        alert("unsuccessful\n");
+                        
+                                            }						
+                }                
+
+        // Driver code
+        let mat1 = [[1, 0], [0, 1]];
+        let mat2 = [[1, 0], [0, 1]];
+        let m1 = 2, m2 = 2, n1 = 2, n2 = 2;
+        let expectedOutcome = [[1,1],[0,1]];
+
+        // Function call
+        TestMultiplyMatrices(m1, m2, mat1, n1, n2, mat2,expectedOutcome);
+
+    </script>
+
+</body>
+
+</html>
