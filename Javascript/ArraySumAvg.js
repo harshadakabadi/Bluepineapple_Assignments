@@ -1,6 +1,6 @@
 function add(arr,len)
 {
-    if(ar.length == 0)
+    if(arr.length == 0)
     {
         return arr[0];
     }
