@@ -1,12 +1,12 @@
-function add(arr,len)
+function add(arr1,len)
 {
-    if(len == 0)
+    if(len==0)
     {
         return arr[0];
     }
     else
     {
-        return arr[len]+add(arr,len--);
+        return arr1[len]+add(arr1,--len);
     }
 }
 let arr=[1,2,3,4,5];
